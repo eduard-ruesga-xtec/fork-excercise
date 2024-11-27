@@ -19,13 +19,7 @@ namespace RefactorFork
 
             int[] numsToCatch = new int[numInputs];
 
-            // recompte de numeros introduits per l'usuari
-            for (int i = 0; i < numInputs; i++)
-            {
-                string putTheNums = string.Format(ForEachNumber, i + 1);
-                Console.Write(putTheNums + LineBreaker);
-                numsToCatch[i] = Convert.ToInt32(Console.ReadLine());
-            }
+            FillArray(numsToCatch);
           
             int productAllNumbers = 0;
             for (int i = 0; i < numInputs; i++)
@@ -34,6 +28,17 @@ namespace RefactorFork
             }
 
             Console.WriteLine(Product + productAllNumbers);
+        }
+
+        public static void FillArray(int[] myArray)
+        {
+            // recompte de numeros introduits per l'usuari
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                string putTheNums = string.Format(ForEachNumber, i + 1);
+                Console.Write(putTheNums + LineBreaker);
+                numsToCatch[i] = Convert.ToInt32(Console.ReadLine());
+            }
         }
     }
 }

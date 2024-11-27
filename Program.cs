@@ -13,6 +13,7 @@ namespace RefactorFork
             int numInputs;
             Console.WriteLine(TextOne);
 
+
             numInputs = Convert.ToInt32(Console.ReadLine());
             Console.Write(numInputs);         
 

@@ -7,12 +7,12 @@ namespace RefactorFork
         {
             //Constantes
             const string TextOne = "Escull introduir la quantitat de nombres entre 15 i 100: ";
-            const string ForEachNumber = "Introdueix el seguent número, {0}: ";
-            const string LineBreaker = "\n";
+            const string ForEachNumber = "Introdueix el seguent número, {0}: ";          
             const string Product = "El producte de cada un dels números es: ";
 
             int numInputs;
             Console.WriteLine(TextOne);
+
 
             numInputs = Convert.ToInt32(Console.ReadLine());
             Console.Write(numInputs);         
@@ -22,8 +22,8 @@ namespace RefactorFork
             // recompte de numeros introduits per l'usuari
             for (int i = 0; i < numInputs; i++)
             {
-                string putTheNums = string.Format(ForEachNumber, i + 1);
-                Console.Write(putTheNums + LineBreaker);
+               
+                Console.WriteLine(string.Format(ForEachNumber, i + 1));
                 numsToCatch[i] = Convert.ToInt32(Console.ReadLine());
             }
           

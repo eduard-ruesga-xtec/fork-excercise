@@ -3,14 +3,14 @@ namespace RefactorFork
 {
     public class Program
     {
+        //Constantes
+        const string TextOne = "Escull introduir la quantitat de nombres entre 15 i 100: ";
+        const string ForEachNumber = "Introdueix el seguent número, {0}: ";
+        const string LineBreaker = "\n";
+        const string Product = "El producte de cada un dels números es: ";
+
         public static void Main()
         {
-            //Constantes
-            const string TextOne = "Escull introduir la quantitat de nombres entre 15 i 100: ";
-            const string ForEachNumber = "Introdueix el seguent número, {0}: ";
-            const string LineBreaker = "\n";
-            const string Product = "El producte de cada un dels números es: ";
-
             int numInputs;
             Console.WriteLine(TextOne);
 
@@ -20,12 +20,7 @@ namespace RefactorFork
             int[] numsToCatch = new int[numInputs];
 
             // recompte de numeros introduits per l'usuari
-            for (int i = 0; i < numInputs; i++)
-            {
-                string putTheNums = string.Format(ForEachNumber, i + 1);
-                Console.Write(putTheNums + LineBreaker);
-                numsToCatch[i] = Convert.ToInt32(Console.ReadLine());
-            }
+            ContNumsArray(numInputs, numsToCatch);
 
             int productAllNumbers = 0;
             for (int i = 0; i < numInputs; i++)
@@ -34,6 +29,16 @@ namespace RefactorFork
             }
 
             Console.WriteLine(Product + productAllNumbers);
+        }
+
+        public static void ContNumsArray(int numInputs, int[] numsToCatch)
+        {
+            for (int i = 0; i < numInputs; i++)
+            {
+                string putTheNums = string.Format(ForEachNumber, i + 1);
+                Console.Write(putTheNums + LineBreaker);
+                numsToCatch[i] = Convert.ToInt32(Console.ReadLine());
+            }
         }
     }
 }

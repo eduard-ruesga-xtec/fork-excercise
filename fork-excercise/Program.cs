@@ -1,39 +1,62 @@
-using System;
-namespace RefactorFork
+public class Actividad2
 {
-    public class Program
+    const int ValorMax = 100;
+    const int ValorMin = 15;
+    const int IntentosMax = 5;
+
+    public static void Main()
     {
-        public static void Main()
+        Console.WriteLine("Introduce la cantidad de números que quieres en la lista:");
+        int valores = Convert.ToInt32(Console.ReadLine());
+
+        if (valores <= 0)
         {
-            //Constantes
-            const string TextOne = "Escull introduir la quantitat de nombres entre 15 i 100: ";
-            const string ForEachNumber = "Introdueix el seguent número, {0}: ";
-            const string LineBreaker = "\n";
-            const string Product = "El producte de cada un dels números es: ";
+            Console.WriteLine("El número de valores debe ser mayor que 0.");
+            return;
+        }
+        int vidas = 0;
+        while (vidas < IntentosMax)
+        {
+            Intentos(valores);
+            vidas++;
+        }
+    }
 
-            int numInputs;
-            Console.WriteLine(TextOne);
+    public static void Intentos(int valores)
+    {
+        int intentos = 0;
+        int cantidadValida = 0;
+        long producto = 1;
+        string final = "";
 
-            numInputs = Convert.ToInt32(Console.ReadLine());
-            Console.Write(numInputs);         
+        while (cantidadValida < valores)
+        {
+            Console.WriteLine($"Introduce un número (entre {ValorMin} y {ValorMax}):");
+            int num = Convert.ToInt32(Console.ReadLine());
+            intentos++;
 
-            int[] numsToCatch = new int[numInputs];
-
-            // recompte de numeros introduits per l'usuari
-            for (int i = 0; i < numInputs; i++)
+            if (num >= ValorMin && num <= ValorMax)
             {
-                string putTheNums = string.Format(ForEachNumber, i + 1);
-                Console.Write(putTheNums + LineBreaker);
-                numsToCatch[i] = Convert.ToInt32(Console.ReadLine());
-            }
-          
-            int productAllNumbers = 0;
-            for (int i = 0; i < numInputs; i++)
-            {
-                productAllNumbers /= numsToCatch[i];
-            }
+                cantidadValida++;
+                final = num + " " + final;
+                producto *= num;
 
-            Console.WriteLine(Product + productAllNumbers);
+            }
+            else
+            {
+                Console.WriteLine($"El número {num} está fuera del rango permitido.");
+            }
+        }
+
+        if (cantidadValida == valores)
+        {
+            Console.WriteLine($"Sus numeros son {final} ");
+            Console.WriteLine($"El producto de los números válidos es: {producto}");
+        }
+        else
+        {
+            Console.WriteLine("No se introdujeron suficientes valores válidos dentro del límite de intentos.");
         }
     }
 }
+
